@@ -1,80 +1,26 @@
-/* Ghassan Store catalogue. Edit catalog.json to add, change or remove items. */
-let activeCategory = "All";
-let catalogue = [];
-const grid = document.getElementById("productGrid");
-const searchInput = document.getElementById("searchInput");
-const resultCount = document.getElementById("resultCount");
-const emptyState = document.getElementById("emptyState");
-const toast = document.getElementById("toast");
-
-const fallbackCatalogue = [
-  { title:"Example HTML Tool", category:"HTML Tools", description:"A small sample HTML project you can download and customize for your own work.", icon:"</>", iconClass:"icon-blue", file:"downloads/example-tool.html", fileLabel:"HTML file", size:"Starter sample", featured:true },
-  { title:"Your Android App", category:"Apps", description:"Replace this sample listing with your app name, version, details and download link.", icon:"▣", iconClass:"icon-purple", file:"", fileLabel:"APK / app", size:"Add your file", featured:false },
-  { title:"Your Creative Image", category:"Images", description:"Add a thumbnail, image description and a link to your original image file.", icon:"▧", iconClass:"icon-green", file:"", fileLabel:"PNG / JPG", size:"Add your file", featured:false },
-  { title:"Your Downloadable File", category:"Files", description:"Share PDFs, ZIP archives, documents and other useful resources with visitors.", icon:"⇩", iconClass:"icon-orange", file:"", fileLabel:"PDF / ZIP", size:"Add your file", featured:false }
-];
-
-function safeText(value) {
-  return String(value ?? "").replace(/[&<>"']/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]));
-}
-function renderItems() {
-  const query = searchInput.value.trim().toLowerCase();
-  const items = catalogue.filter(item => {
-    const categoryMatch = activeCategory === "All" || item.category === activeCategory;
-    const text = `${item.title} ${item.category} ${item.description} ${item.tags || ""}`.toLowerCase();
-    return categoryMatch && text.includes(query);
-  });
-  grid.innerHTML = items.map(item => {
-    const downloadable = Boolean(item.file);
-    const link = downloadable
-      ? `<a class="download-link" href="${safeText(item.file)}" ${item.file.startsWith("http") ? 'target="_blank" rel="noopener noreferrer"' : 'download'}>Download ↗</a>`
-      : `<span class="download-link disabled" aria-label="File link not added">Coming soon</span>`;
-    const iconMarkup = item.image
-      ? `<img class="item-icon-image" src="${safeText(item.image)}" alt="${safeText(item.title)} icon" loading="lazy">`
-      : `<div class="item-icon ${safeText(item.iconClass || "icon-purple")}">${safeText(item.icon || "✦")}</div>`;
-    const version = item.version ? `<span class="item-version">v${safeText(item.version)}</span>` : "";
-    return `<article class="product-card">
-      <div class="card-top">${iconMarkup}<span class="item-type">${safeText(item.category)}</span></div>
-      <h3>${safeText(item.title)} ${version}</h3><p>${safeText(item.description || "")}</p>
-      <div class="card-footer"><span class="file-meta">${safeText(item.fileLabel || "Download")} · ${safeText(item.size || "Details inside")}</span>${link}</div>
-    </article>`;
-  }).join("");
-  resultCount.textContent = `Showing ${items.length} ${items.length === 1 ? "item" : "items"}`;
-  emptyState.hidden = items.length !== 0;
-}
-async function loadCatalogue() {
-  try {
-    const response = await fetch("catalog.json", { cache: "no-store" });
-    if (!response.ok) throw new Error("catalog.json not available");
-    const data = await response.json();
-    catalogue = Array.isArray(data.items) ? data.items : fallbackCatalogue;
-  } catch (error) {
-    catalogue = fallbackCatalogue;
+(() => {
+ const itemsEl=document.getElementById('items'), statusEl=document.getElementById('status'), searchEl=document.getElementById('search'), countEl=document.getElementById('count');
+ let catalog=[],filter='all';
+ document.getElementById('year').textContent=new Date().getFullYear();
+ function safePath(p){return typeof p==='string' ? p.split('/').map(encodeURIComponent).join('/') : '#'}
+ function render(){
+  const q=searchEl.value.trim().toLowerCase();
+  const shown=catalog.filter(x=>(filter==='all'||(x.type||'app')===filter)&&[x.name,x.description,x.version,x.type].some(v=>String(v||'').toLowerCase().includes(q)));
+  itemsEl.innerHTML='';countEl.textContent=`${shown.length} item${shown.length===1?'':'s'}`;
+  if(!shown.length){itemsEl.innerHTML='<div class="empty">No items found. Try another search or category.</div>';return}
+  for(const item of shown){
+   const card=document.createElement('article');card.className='item';
+   const top=document.createElement('div');top.className='item-top';
+   if(item.icon){const im=document.createElement('img');im.className='item-icon';im.src=safePath(item.icon);im.alt='';im.onerror=()=>{im.replaceWith(fallbackIcon(item.type))};top.appendChild(im)}else top.appendChild(fallbackIcon(item.type));
+   const info=document.createElement('div');const title=document.createElement('h3');title.textContent=item.name||'Untitled';const meta=document.createElement('div');meta.className='meta';meta.textContent=`${(item.type||'app').toUpperCase()}${item.version?' · v'+item.version:''}`;info.append(title,meta);top.appendChild(info);
+   const desc=document.createElement('p');desc.className='desc';desc.textContent=item.description||'No description provided.';
+   const link=document.createElement('a');link.className='download';link.href=safePath(item.file);link.textContent='Download item ↓';link.setAttribute('download','');
+   card.append(top,desc,link);itemsEl.appendChild(card);
   }
-  renderItems();
-}
-document.getElementById("categoryFilters").addEventListener("click", event => {
-  const button = event.target.closest("[data-category]");
-  if (!button) return;
-  activeCategory = button.dataset.category;
-  document.querySelectorAll(".filter-chip").forEach(chip => chip.classList.toggle("active", chip === button));
-  renderItems();
-});
-document.querySelectorAll("[data-jump-category]").forEach(button => button.addEventListener("click", () => {
-  activeCategory = button.dataset.jumpCategory;
-  document.querySelectorAll(".filter-chip").forEach(chip => chip.classList.toggle("active", chip.dataset.category === activeCategory));
-  document.getElementById("explore").scrollIntoView({ behavior:"smooth" });
-  renderItems();
-}));
-searchInput.addEventListener("input", renderItems);
-const menuToggle = document.getElementById("menuToggle");
-menuToggle.addEventListener("click", () => {
-  const nav = document.querySelector(".nav-links");
-  const open = nav.classList.toggle("open");
-  menuToggle.setAttribute("aria-expanded", String(open));
-});
-document.querySelectorAll(".nav-links a").forEach(link => link.addEventListener("click", () => {
-  document.querySelector(".nav-links").classList.remove("open");
-  menuToggle.setAttribute("aria-expanded", "false");
-}));
-loadCatalogue();
+ }
+ function fallbackIcon(type){const d=document.createElement('div');d.className='item-icon fallback';d.textContent=({app:'📱',tool:'🧰',file:'📄',image:'🖼️'})[type]||'📦';return d}
+ async function load(){try{const res=await fetch('catalog.json?ts='+Date.now(),{cache:'no-store'});if(!res.ok)throw new Error('Could not load catalog.json ('+res.status+').');const data=await res.json();catalog=Array.isArray(data)?data:(Array.isArray(data.items)?data.items:[]);statusEl.textContent=catalog.length?'':'No items have been published yet.';render()}catch(e){statusEl.textContent='Could not load the catalogue. Check that catalog.json exists in the repository root.';itemsEl.innerHTML='';countEl.textContent='Unavailable'}}
+ searchEl.addEventListener('input',render);
+ document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{filter=b.dataset.filter;document.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('active',x===b));render()}));
+ load();
+})();
