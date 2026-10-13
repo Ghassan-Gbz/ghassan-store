@@ -1,12 +1,1 @@
-[
-  {
-    "id": "sample-html-tool",
-    "name": "Example HTML Tool",
-    "type": "tool",
-    "version": "1.0",
-    "description": "A sample downloadable HTML file. Replace or remove this example from the admin panel.",
-    "file": "downloads/example-tool.html",
-    "icon": "",
-    "updated": "2026-10-13"
-  }
-]
+[]
