@@ -1,72 +1,34 @@
-# Ghassan Store — GitHub Pages website
+# Ghassan Store — GitHub Pages + Simple Admin
 
-A responsive app and digital-download catalogue built with plain HTML, CSS and JavaScript. It is designed to be hosted for free with GitHub Pages.
+## Files
+- `index.html`: public store
+- `admin.html`: owner publishing panel
+- `catalog.json`: catalogue data updated by the admin panel
+- `app.js` / `style.css`: store behavior and styling
+- `uploads/`: created automatically when you publish items
 
-## Included
+## Publish on GitHub Pages (Android)
+1. Download and extract this ZIP on your phone.
+2. Open your existing repository: `Ghassan-Gbz/ghassan-store`.
+3. For the simplest clean setup, upload/replace the files from this ZIP into the repository root. Keep the `assets` and `downloads` folders and their contents. Do not upload the ZIP itself.
+4. Commit changes.
+5. In repository Settings → Pages, select **Deploy from a branch**, branch `main`, folder `/(root)`, then Save.
+6. Wait for the Pages deployment to complete.
 
-- Responsive modern dark theme
-- Search and category filters
-- Catalogue loaded from `catalog.json`
-- Download links for HTML, apps, images, PDFs, ZIPs and other files
-- Developer section for **Ghassan Bin Zia**
-- SEO basics: title, description, `robots.txt`, `sitemap.xml`
-- Example downloadable HTML project
+Website: https://ghassan-gbz.github.io/ghassan-store/
+Admin: https://ghassan-gbz.github.io/ghassan-store/admin.html
 
-## Publish on GitHub Pages
+## Create the GitHub token
+Create a fine-grained token at https://github.com/settings/personal-access-tokens/new
+- Resource owner: `Ghassan-Gbz`
+- Repository access: Only select repositories → `ghassan-store`
+- Repository permissions: Contents → Read and write
+- Set an expiration date.
 
-1. Sign in at https://github.com/.
-2. Create a **public** repository named `ghassan-store`.
-3. Upload all files and folders in this package to the repository root. Keep the `downloads` and `assets` folders.
-4. Open **Settings → Pages**.
-5. Under **Build and deployment**, choose **Deploy from a branch**.
-6. Select branch `main` and folder `/(root)`, then save.
-7. Wait for deployment and open the URL GitHub shows, normally `https://YOUR-USERNAME.github.io/ghassan-store/`.
-8. Replace `YOUR-USERNAME` in `robots.txt` and `sitemap.xml` with your GitHub username.
+Paste the token into `admin.html` and tap **Connect and test**. The token is kept in the current browser tab's session only and is not put into the repository. Do not share it. Clear it when finished and revoke it if exposed.
 
-## Add a listing
+## Publishing an item
+Only name and item file are required. Version, description and gallery icon are optional. The panel uploads the item into `uploads/`, optional icon into `uploads/icons/`, then updates `catalog.json`. The storefront loads the catalogue automatically. GitHub Pages can take a few minutes to deploy changes.
 
-Edit `catalog.json`. Add a new object inside the `items` array. Example:
-
-```json
-{
-  "title": "My New HTML App",
-  "category": "HTML Tools",
-  "description": "A short description of what this tool does.",
-  "icon": "</>",
-  "iconClass": "icon-blue",
-  "file": "downloads/my-new-app.html",
-  "fileLabel": "HTML file",
-  "size": "12 KB",
-  "tags": "html tool web"
-}
-```
-
-Supported categories are `Apps`, `HTML Tools`, `Images`, and `Files`. Supported icon classes: `icon-purple`, `icon-blue`, `icon-green`, `icon-orange`.
-
-### Upload the actual download
-
-- Upload the file into the repository, for example `downloads/my-new-app.html`.
-- Put its relative path in the `file` field: `downloads/my-new-app.html`.
-- For a remote download hosted by a service you trust, you can use its full HTTPS URL in `file`.
-- For images, you can add an image path to the catalogue later if you extend the card design; the starter version uses category icons.
-- Keep filenames simple (letters, numbers, hyphens). Avoid spaces where possible.
-- Never upload private or copyrighted material unless you have permission.
-
-## Important: admin security
-
-This starter package is a **public static website**, not a secure admin system. It intentionally does not include a pretend login form or store an admin password in browser code. Anyone can view source files in a public GitHub repository.
-
-To publish changes, the owner edits `catalog.json` and uploads files through GitHub. A future secure upload dashboard requires a backend/content service with real authentication and access rules. Do not put API keys, passwords, or private tokens in HTML, JavaScript, or this public repository.
-
-## Google Search
-
-1. Replace the placeholder username in `robots.txt` and `sitemap.xml`.
-2. Publish the site first.
-3. Add the site in Google Search Console: https://search.google.com/search-console/
-4. Verify ownership and submit `/ghassan-store/sitemap.xml`.
-
-Google may take time to crawl and index the site; indexing and ranking are not guaranteed.
-
-## Limits
-
-GitHub Pages is static hosting, not unlimited file hosting. Keep the site within GitHub Pages usage limits; consider a dedicated object-storage service for larger downloads. APKs and executable files may trigger browser/security warnings, so only distribute files you own or are authorized to share.
+## Limitations
+This is a static website; the admin page is not a server-side private login. Anyone who has the admin URL can see the form, but publishing requires your token. Do not use it on shared devices or in an untrusted browser. GitHub API uploads are intended for smaller files; the panel limits a file to 20 MB to reduce upload failures. Large APKs need a different storage service or Git LFS/release-based workflow.

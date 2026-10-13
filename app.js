@@ -29,9 +29,13 @@ function renderItems() {
     const link = downloadable
       ? `<a class="download-link" href="${safeText(item.file)}" ${item.file.startsWith("http") ? 'target="_blank" rel="noopener noreferrer"' : 'download'}>Download ↗</a>`
       : `<span class="download-link disabled" aria-label="File link not added">Coming soon</span>`;
+    const iconMarkup = item.image
+      ? `<img class="item-icon-image" src="${safeText(item.image)}" alt="${safeText(item.title)} icon" loading="lazy">`
+      : `<div class="item-icon ${safeText(item.iconClass || "icon-purple")}">${safeText(item.icon || "✦")}</div>`;
+    const version = item.version ? `<span class="item-version">v${safeText(item.version)}</span>` : "";
     return `<article class="product-card">
-      <div class="card-top"><div class="item-icon ${safeText(item.iconClass || "icon-purple")}">${safeText(item.icon || "✦")}</div><span class="item-type">${safeText(item.category)}</span></div>
-      <h3>${safeText(item.title)}</h3><p>${safeText(item.description)}</p>
+      <div class="card-top">${iconMarkup}<span class="item-type">${safeText(item.category)}</span></div>
+      <h3>${safeText(item.title)} ${version}</h3><p>${safeText(item.description || "")}</p>
       <div class="card-footer"><span class="file-meta">${safeText(item.fileLabel || "Download")} · ${safeText(item.size || "Details inside")}</span>${link}</div>
     </article>`;
   }).join("");
