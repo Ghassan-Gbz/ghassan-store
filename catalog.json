@@ -43,6 +43,19 @@
       "fileLabel": "PDF / ZIP",
       "size": "Add your file",
       "tags": "pdf zip document"
+    },
+    {
+      "title": "AttendPro",
+      "category": "Apps",
+      "description": "Reporting",
+      "icon": "▣",
+      "iconClass": "icon-purple",
+      "file": "uploads/1791860351353-AttendPro.apk",
+      "fileLabel": "APK file",
+      "size": "10.19 MB",
+      "tags": "attendpro 1.7 apps",
+      "version": "1.7",
+      "image": "uploads/icons/1791860351353-100619.png"
     }
   ]
 }
