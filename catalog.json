@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "id": "1791863041525",
+    "name": "AttendPro",
+    "type": "app",
+    "version": "1.0",
+    "description": "Reporting students app",
+    "file": "downloads/1791863025223-AttendPro.apk",
+    "icon": "assets/icons/1791863036743-100619.png"
+  }
+]
