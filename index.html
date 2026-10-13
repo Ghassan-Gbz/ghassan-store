@@ -2,37 +2,17 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Ghassan Store — discover apps, tools, files and downloads.">
-<meta name="theme-color" content="#101522">
-<title>Ghassan Store | Apps & Downloads</title>
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="style.css">
+<meta name="description" content="Ghassan Store — a curated destination for apps, digital tools and useful downloads by Ghassan Bin Zia.">
+<meta name="theme-color" content="#090b10"><title>Ghassan Store — The Digital Atelier</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="topbar">
-  <a class="brand" href="./"><span class="brand-mark">G</span><span>Ghassan <b>Store</b><small>by Ghassan Bin Zia</small></span></a>
-  <a class="admin-link" href="admin.html">Admin</a>
-</header>
+<div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+<header class="topbar"><a class="brand" href="./" aria-label="Ghassan Store home"><span class="brand-mark">G<span>✦</span></span><span class="brand-copy"><strong>GHASSAN <i>STORE</i></strong><small>THE DIGITAL ATELIER</small></span></a><nav><a class="nav-link" href="#collection">Collection</a><a class="admin-link" href="admin.html"><span class="lock">⌑</span> Admin portal <span>↗</span></a></nav></header>
 <main>
-<section class="hero">
-  <div class="eyebrow">YOUR DIGITAL COLLECTION</div>
-  <h1>Find your next <span>favorite.</span></h1>
-  <p>Apps, useful tools, images and files — collected in one place.</p>
-  <label class="search"><span>⌕</span><input id="search" type="search" placeholder="Search items…" autocomplete="off"></label>
-  <div class="filters" id="filters">
-    <button class="filter active" data-filter="all">All items</button>
-    <button class="filter" data-filter="app">Apps</button>
-    <button class="filter" data-filter="tool">Tools</button>
-    <button class="filter" data-filter="file">Files</button>
-    <button class="filter" data-filter="image">Images</button>
-  </div>
-</section>
-<section class="catalog-section">
-  <div class="section-head"><div><div class="eyebrow">THE COLLECTION</div><h2>Explore downloads</h2></div><span id="count" class="count">Loading…</span></div>
-  <div id="status" class="status">Loading store catalogue…</div>
-  <div id="items" class="items"></div>
-</section>
-</main>
-<footer><span>© <span id="year"></span> Ghassan Store</span><span>Made by Ghassan Bin Zia</span></footer>
-<script src="app.js"></script>
-</body></html>
+<section class="hero"><div class="hero-copy"><div class="eyebrow"><span class="eyebrow-line"></span> A CURATED DIGITAL EXPERIENCE</div><h1>Good tech.<br><em>Beautifully</em> found.</h1><p class="hero-intro">Discover thoughtfully collected apps, smart tools and digital essentials — all in one refined destination.</p><div class="hero-actions"><a href="#collection" class="primary-cta">Explore the collection <span>↘</span></a><div class="signature"><span class="signature-dot"></span><span>Curated by <b>Ghassan Bin Zia</b></span></div></div></div><div class="hero-art" aria-label="Abstract luxury digital artwork"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="orbit orbit-c"></div><div class="hero-gem"><div class="gem-core">G<span>✦</span></div></div><div class="art-caption caption-top">EST. 2026 <span>•</span> DIGITAL GOODS</div><div class="art-caption caption-bottom">QUALITY IN EVERY DETAIL <span>✧</span></div><div class="art-glint glint-a">✦</div><div class="art-glint glint-b">✧</div></div><div class="hero-foot"><span>01 / DIGITAL COLLECTION</span><span>DESIGNED FOR DISCOVERY</span></div></section>
+<section class="collection" id="collection"><div class="section-top"><div><div class="eyebrow"><span class="eyebrow-line"></span> THE LIBRARY</div><h2>Find your <em>next essential.</em></h2><p class="section-desc">A growing collection of downloads, selected to make your digital life better.</p></div><div class="collection-note"><span class="note-star">✦</span><span>THE COLLECTION<br><b>Always evolving</b></span></div></div>
+<div class="toolbar"><label class="search"><span class="search-icon">⌕</span><input id="search" type="search" placeholder="Search the collection…" autocomplete="off" aria-label="Search downloads"><kbd>⌕</kbd></label><div class="filters" id="filters"><button class="filter active" data-filter="all">Everything</button><button class="filter" data-filter="app">Apps</button><button class="filter" data-filter="tool">Tools</button><button class="filter" data-filter="file">Files</button><button class="filter" data-filter="image">Images</button></div></div>
+<div class="catalog-meta"><span>CURATED DOWNLOADS</span><span id="count">Loading collection…</span></div><div id="status" class="status">Preparing your collection…</div><div id="items" class="items"></div>
+<div class="closing-note"><span>✦</span><p>Thoughtfully shared. Made for discovery.</p><span>✦</span></div></section>
+</main><footer><a class="footer-brand" href="./">GHASSAN <i>STORE</i></a><span>© <span id="year"></span> Ghassan Bin Zia. Crafted for discovery.</span><a href="admin.html">Private admin portal ↗</a></footer><script src="app.js"></script></body></html>
