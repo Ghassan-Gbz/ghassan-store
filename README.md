@@ -23,3 +23,10 @@
 - Item uploads are committed to the repository. Changes can take a few minutes to appear on the public site.
 - Test with a small file first. GitHub API/network/browser errors may interrupt a publish. If that happens, check repository file list and `catalog.json` before retrying.
 - Do not use a token with broader permissions than this repository needs.
+
+
+## Separate admin URL
+Public store: `https://ghassan-gbz.github.io/ghassan-store/`
+Admin console: `https://ghassan-gbz.github.io/ghassan-store/admin.html` (not linked from the public storefront).
+
+Important: hiding the link does not secure a static page. The current admin tool uses a GitHub token in the browser session. For real access control, move write operations behind a backend and never put server credentials in public files.
