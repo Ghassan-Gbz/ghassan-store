@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="Discover apps, web tools, HTML projects, images and digital downloads from Ghassan Bin Zia.">
+  <title>Ghassan Store — Apps, Tools & Downloads</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Ghassan Store home">
+      <span class="brand-mark">G<span>✦</span></span>
+      <span class="brand-copy"><strong>Ghassan Store</strong><small>YOUR DIGITAL COLLECTION</small></span>
+    </a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#explore">Explore</a><a href="#categories">Categories</a><a href="#developer">Developer</a>
+    </nav>
+    <a class="header-cta" href="#explore"><span>Explore downloads</span><span aria-hidden="true">↗</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+  </header>
+
+  <main id="home">
+    <section class="hero wrap">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse"></span> A PERSONAL APP & DOWNLOAD HUB</div>
+        <h1>Your next favorite<br><span>download starts here.</span></h1>
+        <p class="hero-lead">Apps, useful web tools, HTML projects, images and digital resources — thoughtfully collected in one place.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#explore">Explore the collection <span>↗</span></a>
+          <a class="button button-quiet" href="#developer">Meet the developer</a>
+        </div>
+        <div class="hero-trust"><span class="trust-icon">✓</span> Simple access <span class="dot-sep">·</span> Direct downloads <span class="dot-sep">·</span> Built by Ghassan</div>
+      </div>
+      <div class="hero-art" aria-label="Decorative app collection illustration">
+        <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+        <div class="float-tile tile-code"><span class="tile-icon cyan">&lt;/&gt;</span><small>WEB TOOLS</small><b>Build something</b></div>
+        <div class="float-tile tile-file"><span class="tile-icon violet">↓</span><small>DOWNLOADS</small><b>Ready when you are</b></div>
+        <div class="app-window">
+          <div class="window-top"><i></i><i></i><i></i><span>ghassan.store / library</span></div>
+          <div class="window-body">
+            <div class="window-sidebar"><b>G.</b><span class="side-active"></span><span></span><span></span><span></span></div>
+            <div class="window-content">
+              <small>YOUR LIBRARY</small><h3>Made to be useful.</h3>
+              <div class="mini-grid"><div class="mini-app mini-purple">✦<span>Apps</span></div><div class="mini-app mini-blue">⌘<span>HTML</span></div><div class="mini-app mini-green">▧<span>Media</span></div><div class="mini-app mini-orange">⇩<span>Files</span></div></div>
+              <div class="window-line"></div><div class="window-line short"></div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-badge"><span>✦</span><div><b>Creator-owned</b><small>Digital downloads</small></div></div>
+      </div>
+    </section>
+
+    <section class="stats wrap" aria-label="Store features">
+      <div><span class="stat-icon">✧</span><span><b>One simple library</b><small>Everything in one place</small></span></div>
+      <div><span class="stat-icon">↧</span><span><b>Easy downloads</b><small>Quick access to files</small></span></div>
+      <div><span class="stat-icon">⌘</span><span><b>Made by a creator</b><small>Independent projects</small></span></div>
+    </section>
+
+    <section class="section wrap" id="explore">
+      <div class="section-heading">
+        <div><div class="eyebrow">THE COLLECTION</div><h2>Explore the library</h2><p>Find a tool, project or file for your next idea.</p></div>
+        <div class="search-wrap"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Search downloads..." aria-label="Search downloads"></div>
+      </div>
+      <div class="filter-row" id="categoryFilters" aria-label="Filter by category">
+        <button class="filter-chip active" data-category="All">✦ All items</button>
+        <button class="filter-chip" data-category="Apps">▣ Apps</button>
+        <button class="filter-chip" data-category="HTML Tools">⌘ HTML Tools</button>
+        <button class="filter-chip" data-category="Images">▧ Images</button>
+        <button class="filter-chip" data-category="Files">⇩ Files</button>
+      </div>
+      <div class="results-meta"><span id="resultCount">Showing collection</span><span class="safe-note"><span>●</span> Always check files before opening</span></div>
+      <div class="product-grid" id="productGrid" aria-live="polite"></div>
+      <div class="empty-state" id="emptyState" hidden><span>⌕</span><h3>No matching downloads</h3><p>Try another search or category.</p></div>
+      <p class="catalog-note"><b>For the site owner:</b> edit <code>catalog.json</code> to add your own items, then upload the file and any downloads to your GitHub repository. See <code>README.md</code>.</p>
+    </section>
+
+    <section class="categories-section" id="categories">
+      <div class="wrap">
+        <div class="section-heading"><div><div class="eyebrow">BROWSE YOUR WAY</div><h2>What are you looking for?</h2><p>Pick a category to narrow down the collection.</p></div></div>
+        <div class="category-grid">
+          <button class="category-card" data-jump-category="Apps"><span class="category-symbol symbol-purple">▣</span><span><b>Apps</b><small>Android apps and releases</small></span><span class="arrow">↗</span></button>
+          <button class="category-card" data-jump-category="HTML Tools"><span class="category-symbol symbol-blue">&lt;/&gt;</span><span><b>HTML Tools</b><small>Web apps and experiments</small></span><span class="arrow">↗</span></button>
+          <button class="category-card" data-jump-category="Images"><span class="category-symbol symbol-green">▧</span><span><b>Images & media</b><small>Graphics and resources</small></span><span class="arrow">↗</span></button>
+          <button class="category-card" data-jump-category="Files"><span class="category-symbol symbol-orange">⇩</span><span><b>Files & documents</b><small>PDF, ZIP and more</small></span><span class="arrow">↗</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="developer-section wrap" id="developer">
+      <div class="developer-card">
+        <div class="developer-avatar">GBZ<span>✦</span></div>
+        <div class="developer-copy"><div class="eyebrow">THE PERSON BEHIND THE PROJECT</div><h2>Meet the developer.</h2><p class="developer-name">Ghassan Bin Zia</p><p>This is a personal digital hub for sharing apps, web projects and useful downloads. New items can be added as the collection grows.</p><div class="developer-tags"><span>Independent creator</span><span>Web projects</span><span>Digital resources</span></div></div>
+        <div class="developer-decoration">G<span>.</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer wrap">
+    <a class="brand footer-brand" href="#home"><span class="brand-mark">G<span>✦</span></span><span class="brand-copy"><strong>Ghassan Store</strong><small>BUILT BY GHASSAN BIN ZIA</small></span></a>
+    <p>Share useful things. Build cool things.</p>
+    <a href="#home" class="back-top">Back to top ↑</a>
+  </footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>

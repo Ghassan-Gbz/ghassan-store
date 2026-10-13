@@ -1,0 +1,48 @@
+{
+  "items": [
+    {
+      "title": "Example HTML Tool",
+      "category": "HTML Tools",
+      "description": "A small sample HTML project you can download and customize for your own work.",
+      "icon": "</>",
+      "iconClass": "icon-blue",
+      "file": "downloads/example-tool.html",
+      "fileLabel": "HTML file",
+      "size": "Starter sample",
+      "tags": "html web app"
+    },
+    {
+      "title": "Your Android App",
+      "category": "Apps",
+      "description": "Replace this sample listing with your app name, version, details and download link.",
+      "icon": "▣",
+      "iconClass": "icon-purple",
+      "file": "",
+      "fileLabel": "APK / app",
+      "size": "Add your file",
+      "tags": "android apk mobile"
+    },
+    {
+      "title": "Your Creative Image",
+      "category": "Images",
+      "description": "Add a thumbnail, image description and a link to your original image file.",
+      "icon": "▧",
+      "iconClass": "icon-green",
+      "file": "",
+      "fileLabel": "PNG / JPG",
+      "size": "Add your file",
+      "tags": "image photo graphics"
+    },
+    {
+      "title": "Your Downloadable File",
+      "category": "Files",
+      "description": "Share PDFs, ZIP archives, documents and other useful resources with visitors.",
+      "icon": "⇩",
+      "iconClass": "icon-orange",
+      "file": "",
+      "fileLabel": "PDF / ZIP",
+      "size": "Add your file",
+      "tags": "pdf zip document"
+    }
+  ]
+}
