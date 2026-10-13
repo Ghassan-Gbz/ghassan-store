@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "id": "1791864252279",
+    "name": "AttendPro",
+    "type": "app",
+    "version": "1.0",
+    "description": "Reporting students as absent and leave digitally",
+    "file": "downloads/1791864238618-AttendPro.apk",
+    "icon": "assets/icons/1791864247883-100619.png"
+  }
+]
